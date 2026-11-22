@@ -1,0 +1,8 @@
+flask>=3.0
+gunicorn>=22.0
+requests>=2.31
+pypdf>=4.0
+numpy>=1.26
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+python-dotenv>=1.0

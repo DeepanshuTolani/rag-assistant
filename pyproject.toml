@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # long literal dicts/prompts are fine; formatting is not enforced
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

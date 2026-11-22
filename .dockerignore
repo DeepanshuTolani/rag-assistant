@@ -1,0 +1,8 @@
+.env
+.git
+logs
+__pycache__
+.pytest_cache
+.ruff_cache
+eval/docs
+results

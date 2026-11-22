@@ -1,0 +1,22 @@
+# secrets
+.env
+.env.*
+!.env.example
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+# runtime
+logs/*
+!logs/.gitkeep
+data/
+# eval inputs you may not want public (add your own docs deliberately)
+eval/docs/*
+!eval/docs/.gitkeep
+!eval/docs/README.md
+*.ipynb_checkpoints
+
+eval/dataset.draft.jsonl

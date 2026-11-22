@@ -1,0 +1,25 @@
+{
+  "_readme": "Every number in this file is written by code (eval/run_eval.py, bench/load_test.py, bench/summarize_logs.py). A section with status 'not_run' contains NO numbers on purpose.",
+  "eval": {
+    "status": "not_run",
+    "reason": "No evaluation documents or GROQ_API_KEY were available when the project was built, so no retrieval/answer/citation/refusal/baseline metric has been measured.",
+    "reproduce": [
+      "cp your 3-5 PDFs/TXTs into eval/docs/",
+      "python -m eval.make_eval_set   # drafts questions; review by hand -> eval/dataset.jsonl (reviewed: true)",
+      "python -m eval.run_eval --chunk-sizes 500 1000 --ks 1 3 5 8 --gen-ks 5"
+    ]
+  },
+  "load": {
+    "status": "not_run",
+    "reason": "Needs a running server with a real GROQ_API_KEY, gunicorn and a stated hardware spec; none available when the project was built.",
+    "reproduce": [
+      "GROQ_API_KEY=... gunicorn -c gunicorn.conf.py wsgi:app",
+      "python -m bench.load_test --url http://127.0.0.1:8000 --doc eval/docs/<doc> --questions eval/dataset.jsonl --users 1 5 20 --duration 60 --server-hardware '<describe machine>'"
+    ]
+  },
+  "log_summary": {
+    "status": "not_run",
+    "reason": "No deployment has been run; there are no real request logs to summarise.",
+    "reproduce": ["python -m bench.summarize_logs logs/requests.jsonl --write-results"]
+  }
+}

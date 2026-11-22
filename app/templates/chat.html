@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d1b">
+
+    <title>DocuMind AI | Intelligent Document Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">D</div>
+            <div>
+                <h2>DocuMind<span> AI</span></h2>
+                <small>INTELLIGENT WORKSPACE</small>
+            </div>
+        </div>
+
+        <button class="new-chat-btn" id="reset-btn">
+            <span>＋</span> New Session
+        </button>
+
+        <div class="sidebar-section">
+            <div class="section-heading">
+                <span>YOUR DOCUMENTS</span>
+                <span class="document-count" id="document-count">0</span>
+            </div>
+
+            <label class="upload-card" id="dropzone">
+
+                <input type="file"
+                       id="file-input"
+                       accept=".pdf,.txt"
+                       hidden>
+
+                <div class="upload-icon">↑</div>
+
+                <h3>Upload documents</h3>
+
+                <p>Drag & drop or browse files</p>
+
+                <span class="file-support">PDF and TXT · Max 5 MB</span>
+
+            </label>
+
+            <div id="upload-status" role="status"></div>
+
+            <div class="document-list-container">
+                <div class="document-list-title">UPLOADED FILES</div>
+                <ul id="doc-list" class="doc-list"></ul>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="security-card">
+                <span class="security-icon">✦</span>
+                <div>
+                    <strong>AI-Powered Workspace</strong>
+                    <p>Ask questions. Discover insights.</p>
+                </div>
+            </div>
+
+            <div class="creator">
+                <div class="creator-avatar">DT</div>
+                <div class="creator-info">
+                    <strong>Deepanshu Tolani</strong>
+                    <span>Creator & Developer</span>
+                </div>
+                <span class="creator-dot"></span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="breadcrumb">
+                <span class="breadcrumb-muted">Workspace</span>
+                <span>/</span>
+                <strong>Document Assistant</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="status-indicator">
+                    <span></span> AI Assistant Online
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- CHAT AREA -->
+        <section class="chat-area">
+
+            <div class="chat-box" id="chat-box" aria-live="polite">
+
+                <div class="welcome-screen" id="welcome-screen">
+
+                    <div class="welcome-glow"></div>
+
+                    <div class="welcome-icon">✧</div>
+
+                    <div class="welcome-label">
+                        YOUR INTELLIGENT DOCUMENT ASSISTANT
+                    </div>
+
+                    <h1>
+                        Your documents.<br>
+                        <span>Understood instantly.</span>
+                    </h1>
+
+                    <p class="welcome-description">
+                        Upload your documents and let AI help you understand,
+                        analyze, and discover information through natural
+                        conversations.
+                    </p>
+
+                    <div class="welcome-features">
+
+                        <div class="feature-item">
+                            <span>⌕</span>
+                            <div>
+                                <strong>Smart Search</strong>
+                                <small>Find information instantly</small>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <span>✧</span>
+                            <div>
+                                <strong>AI Insights</strong>
+                                <small>Understand complex content</small>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <span>▤</span>
+                            <div>
+                                <strong>Source Citations</strong>
+                                <small>Trace answers to documents</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="suggestion-heading">
+                        TRY ASKING
+                    </div>
+
+                    <div class="suggestions">
+
+                        <button class="suggestion"
+                                data-question="Summarize my uploaded document">
+                            ✦ Summarize my document
+                        </button>
+
+                        <button class="suggestion"
+                                data-question="What are the key points?">
+                            ◈ Find key points
+                        </button>
+
+                        <button class="suggestion"
+                                data-question="Explain the main concepts">
+                            ◎ Explain concepts
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT AREA -->
+            <div class="input-wrapper">
+
+                <form id="chat-form" class="chat-form">
+
+                    <textarea
+                        id="user-input"
+                        rows="1"
+                        maxlength="2000"
+                        placeholder="Ask anything about your documents..."
+                        aria-label="Ask a question"
+                    ></textarea>
+
+                    <div class="input-footer">
+
+                        <div class="input-hint">
+                            <span>✧</span>
+                            AI-generated answers with source references
+                        </div>
+
+                        <button id="send-button"
+                                type="submit"
+                                disabled>
+                            <span>Send message</span>
+                            <span class="send-icon">↑</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <p class="disclaimer">
+                    AI can make mistakes. Verify important information
+                    against your original documents.
+                </p>
+
+            </div>
+
+        </section>
+
+        <footer class="app-footer">
+            <span>NexusRag</span>
+            <span>Crafted with precision by <strong>Deepanshu Tolani</strong></span>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
